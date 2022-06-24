@@ -8,6 +8,6 @@ export default {
   signed: true,
   rolling: false,
   renew: false,
-  secure: process.env === 'production',
+  secure: true,
   sameSite: 'None'
 }
