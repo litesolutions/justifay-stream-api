@@ -29,7 +29,10 @@ const app = new Koa({
 
 const origins = [
   'http://localhost:8080',
-  'https://localhost:8080'
+  'https://localhost:8080',
+  'https://id.justifay.com',
+  'https://stream.justifay.com',
+  'https://justifay.com'
 ]
 
 app
