@@ -1,6 +1,8 @@
 ARG RELEASE_TAG=development
 FROM node:18-alpine AS builder
 
+RUN apk --no-cache add git
+
 ARG RELEASE_TAG
 
 RUN mkdir /build
