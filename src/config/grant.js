@@ -5,7 +5,7 @@ export default {
     origin: process.env.GRANT_ORIGIN,
     prefix: process.env.GRANT_PREFIX
   },
-  resonate: {
+  justifay: {
     access_url: `${process.env.OAUTH_HOST}/v1/oauth/tokens`,
     authorize_url: `${process.env.OAUTH_HOST}/authorize`,
     oauth: 2,
