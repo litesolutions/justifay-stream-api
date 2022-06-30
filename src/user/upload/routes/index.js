@@ -83,6 +83,14 @@ audioQueue.on('global:completed', async (jobId) => {
   }
 })
 
+audioQueue.on('global:error', (err) => {
+  logger.error(err)
+})
+
+audioQueue.on('global:failed', (job, err) => {
+  logger.error(err)
+})
+
 const audioDurationQueue = new Queue('audio-duration', queueOptions)
 
 audioDurationQueue.on('global:completed', async (jobId) => {
