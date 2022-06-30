@@ -1,4 +1,4 @@
-import app from './'
+import app from './index.js'
 
 const port = process.env.APP_PORT || 4000
 

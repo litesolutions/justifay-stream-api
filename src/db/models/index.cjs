@@ -4,7 +4,7 @@ import sequelize, { Sequelize, DataTypes } from 'sequelize'
 
 const basename = path.basename(__filename)
 const env = process.env.NODE_ENV || 'development'
-const config = require(path.join(__dirname, '/../../config/databases'))[env]
+const config = require(path.join(__dirname, '/../../config/databases.cjs'))[env]
 const db = {}
 
 const databases = Object.keys(config.databases)
@@ -19,7 +19,7 @@ for (let i = 0; i < databases.length; ++i) {
 fs
   .readdirSync(path.join(__dirname, './userapi'))
   .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js')
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.cjs')
   })
   .forEach(file => {
     const model = require(path.join(__dirname, '/userapi', file))(db.UserAPI, DataTypes)
