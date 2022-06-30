@@ -27,7 +27,7 @@ export default function () {
         in: 'query',
         name: 'basePath',
         type: 'string',
-        enum: ['/', '/upload', '/user/upload']
+        enum: ['/', '/upload', '/user/upload', '/api/user/upload']
       }
     ],
     responses: {

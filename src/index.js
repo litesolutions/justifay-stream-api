@@ -44,11 +44,11 @@ app
     swaggerOptions: {
       urls: [
         {
-          url: '/health/apiDocs?type=apiDoc&basePath=/health',
+          url: `${process.env.API_PREFIX}/health/apiDocs?type=apiDoc&basePath=${process.env.API_PREFIX}/health`,
           name: 'Health API Service'
         },
         {
-          url: '/user/upload/apiDocs?type=apiDoc&basePath=/user/upload',
+          url: `${process.env.API_PREFIX}/user/upload/apiDocs?type=apiDoc&basePath=${process.env.API_PREFIX}/user/upload`,
           name: 'Upload API Service'
         }
       ]
