@@ -26,7 +26,7 @@
     "file-type": "^17.1.2",
     "grant-koa": "^5.4.8",
     "image-size": "^1.0.1",
-    "ioredis": "^4.22.0",
+    "ioredis": "^4.28.5",
     "keygrip": "^1.1.0",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
