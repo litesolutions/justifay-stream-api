@@ -11,16 +11,16 @@ import cors from '@koa/cors'
 
 import KeyGrip from 'keygrip'
 
-import koaCashConfig from './config/cache'
-import errorConfig from './config/error'
-import compressConfig from './config/compression'
-import sessionConfig from './config/session'
+import koaCashConfig from './config/cache.js'
+import errorConfig from './config/error.js'
+import compressConfig from './config/compression.js'
+import sessionConfig from './config/session.js'
 
 /**
  * Koa apps
  */
-import health from './health'
-import user from './user'
+import health from './health/index.js'
+import user from './user/index.js'
 
 const app = new Koa({
   keys: new KeyGrip([process.env.APP_KEY, process.env.APP_KEY_2], 'sha256'),
@@ -44,8 +44,12 @@ app
     swaggerOptions: {
       urls: [
         {
-          url: '/health/apiDocs?type=apiDoc&basePath=/health',
+          url: `${process.env.API_PREFIX}/health/apiDocs?type=apiDoc&basePath=${process.env.API_PREFIX}/health`,
           name: 'Health API Service'
+        },
+        {
+          url: `${process.env.API_PREFIX}/user/upload/apiDocs?type=apiDoc&basePath=${process.env.API_PREFIX}/user/upload`,
+          name: 'Upload API Service'
         }
       ]
     }

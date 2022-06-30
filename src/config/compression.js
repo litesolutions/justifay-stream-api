@@ -4,6 +4,6 @@ export default () => {
       return /text/i.test(contentType)
     },
     threshold: 2048,
-    flush: require('zlib').Z_SYNC_FLUSH
+    flush: import('zlib').Z_SYNC_FLUSH
   }
 }

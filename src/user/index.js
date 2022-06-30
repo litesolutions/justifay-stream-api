@@ -8,14 +8,19 @@ import { validate as isValidUUID } from 'uuid'
  */
 
 import grant from 'grant-koa'
-import grantConfig from '../config/grant'
+import grantConfig from '../config/grant.js'
 
-import logout from './logout'
+import logout from './logout.js'
+import upload from './upload/index.js'
 
 /**
  * Swagger client for user-api
  */
 import SwaggerClient from 'swagger-client'
+
+const allowlist = [
+  '/upload/apiDocs'
+]
 
 const user = new Koa()
 
@@ -34,6 +39,10 @@ user.use(async (ctx, next) => {
 })
 
 user.use(async (ctx, next) => {
+  console.log(ctx.path)
+
+  if (allowlist.includes(ctx.path)) return await next()
+
   if (!ctx.accessToken) {
     ctx.status = 401
     ctx.throw(401, 'Missing required access token')
@@ -91,6 +100,7 @@ user.use(async (ctx, next) => {
   await next()
 })
 
+user.use(upload.routes())
 user.use(mount('/logout', logout))
 
 export default user

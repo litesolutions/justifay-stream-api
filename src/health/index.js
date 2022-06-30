@@ -1,7 +1,9 @@
 import Router from '@koa/router'
 import { initialize } from 'koa-openapi'
-import openapiDoc from './api-doc'
+import openapiDoc from './api-doc.js'
 import cors from '@koa/cors'
+import apiDocs from './routes/apiDocs.js'
+import healthModule from './routes/index.js'
 
 const health = new Router()
 const router = new Router()
@@ -11,8 +13,8 @@ initialize({
   basePath: '/health',
   apiDoc: openapiDoc,
   paths: [
-    { path: '/apiDocs', module: require('./routes/apiDocs') },
-    { path: '/', module: require('./routes') }
+    { path: '/apiDocs', module: apiDocs },
+    { path: '/', module: healthModule }
   ]
 })
 

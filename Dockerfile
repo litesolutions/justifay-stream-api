@@ -14,7 +14,6 @@ WORKDIR /build/justifay-stream-api
 
 RUN npm i -g npm
 RUN npm install
-RUN npm run build
 
 FROM node:18-alpine
 
@@ -23,7 +22,7 @@ WORKDIR /build/justifay-stream-api
 COPY --from=builder /build/justifay-stream-api/.env.example ./
 COPY --from=builder /build/justifay-stream-api/package* ./
 COPY --from=builder /build/justifay-stream-api/node_modules ./node_modules
-COPY --from=builder /build/justifay-stream-api/lib ./lib
+COPY --from=builder /build/justifay-stream-api/src ./src
 
 EXPOSE 4000
 

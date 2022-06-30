@@ -1,4 +1,6 @@
-import { UserAPI as sequelize } from '../../db/models'
+import db from '../../db/models/index.js'
+
+const { UserAPI: sequelize } = db
 
 export default function () {
   const operations = {

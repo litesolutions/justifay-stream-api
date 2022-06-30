@@ -3,7 +3,7 @@ import NodeCache from 'node-cache'
 import ms from 'ms'
 import safeStringify from 'fast-safe-stringify'
 
-import redisConfig from './redis'
+import redisConfig from './redis.js'
 
 const CACHE_MAX_AGE = process.env.NODE_ENV === 'production' ? ms('3h') : 0
 const CACHE_MAX_AGE_SEC = CACHE_MAX_AGE / 1000
