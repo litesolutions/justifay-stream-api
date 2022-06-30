@@ -1,4 +1,4 @@
-import db from '../../db/models/index.cjs'
+import db from '../../db/models/index.js'
 
 const { UserAPI: sequelize } = db
 

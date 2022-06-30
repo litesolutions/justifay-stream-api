@@ -1,30 +1,33 @@
 import fs from 'fs'
-import path from 'path'
 import sequelize, { Sequelize, DataTypes } from 'sequelize'
+import config from '../../config/databases.js'
+import path from 'path'
 
-const basename = path.basename(__filename)
+const filename = new URL('', import.meta.url).pathname
+const dirname = new URL('.', import.meta.url).pathname
+
+const basename = path.basename(filename)
 const env = process.env.NODE_ENV || 'development'
-const config = require(path.join(__dirname, '/../../config/databases.cjs'))[env]
 const db = {}
 
-const databases = Object.keys(config.databases)
+const databases = Object.keys(config[env].databases)
 
 for (let i = 0; i < databases.length; ++i) {
   const database = databases[i]
-  const dbPath = config.databases[database]
+  const dbPath = config[env].databases[database]
 
   db[database] = new Sequelize(dbPath.database, dbPath.username, dbPath.password, dbPath)
 }
 
 fs
-  .readdirSync(path.join(__dirname, './userapi'))
+  .readdirSync(path.join(dirname, './userapi'))
   .filter(file => {
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.cjs')
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, '/userapi', file))(db.UserAPI, DataTypes)
+    const model = import('./userapi/' + file)
 
-    db[model.name] = model
+    db[model.name] = model(db.UserAPI, DataTypes)
   })
 
 db.sequelize = sequelize
