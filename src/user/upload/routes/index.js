@@ -211,7 +211,9 @@ const processFile = ctx => {
 
       logger.info('Adding audio to queue')
 
-      audioQueue.add({ filename })
+      const job = await audioQueue.add({ filename })
+
+      logger.info(`Job created with id: ${job.id}`)
     }
 
     if (isImage) {
