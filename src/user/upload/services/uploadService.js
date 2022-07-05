@@ -45,7 +45,7 @@ const audioQueue = new Queue('convert-audio', queueOptions)
 
 const queueEvents = new QueueEvents('convert-audio', queueOptions)
 
-queueEvents.on('completed', async (jobId) => {
+queueEvents.on('completed', async ({ jobId }) => {
   console.log(`Job with id ${jobId} has been completed`)
 
   try {
