@@ -16,15 +16,11 @@ export default function () {
         }
       })
 
-      let response = await client.apis.Usergroups.ResonateUser_ListUsersUserGroups({
+      const response = await client.apis.Usergroups.ResonateUser_ListUsersUserGroups({
         id: ctx.profile.id
       })
 
       const { usergroup: usergroups } = response.body
-
-      response = await client.apis.Users.ResonateUser_GetUserCredits({
-        id: ctx.profile.id
-      })
 
       const data = Object.assign({}, ctx.profile, {
         token: ctx.accessToken,
