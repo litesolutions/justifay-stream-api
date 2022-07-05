@@ -40,10 +40,6 @@ upload
       }
     }
   }))
-  .use(router.routes())
-  .use(router.allowedMethods({
-    throw: true
-  }))
 
 upload.use('/upload', router.routes(), router.allowedMethods({ throw: true }))
 
