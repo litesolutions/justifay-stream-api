@@ -12,6 +12,7 @@ import grantConfig from '../config/grant.js'
 
 import logout from './logout.js'
 import upload from './upload/index.js'
+import profile from './profile/index.js'
 
 /**
  * Swagger client for user-api
@@ -19,7 +20,8 @@ import upload from './upload/index.js'
 import SwaggerClient from 'swagger-client'
 
 const allowlist = [
-  '/upload/apiDocs'
+  '/upload/apiDocs',
+  '/profile/apiDocs'
 ]
 
 const user = new Koa()
@@ -39,8 +41,6 @@ user.use(async (ctx, next) => {
 })
 
 user.use(async (ctx, next) => {
-  console.log(ctx.path)
-
   if (allowlist.includes(ctx.path)) return await next()
 
   if (!ctx.accessToken) {
@@ -101,6 +101,7 @@ user.use(async (ctx, next) => {
 })
 
 user.use(upload.routes())
+user.use(profile.routes())
 user.use(mount('/logout', logout))
 
 export default user
