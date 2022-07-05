@@ -38,6 +38,7 @@ const logger = winston.createLogger({
 })
 
 const queueOptions = {
+  prefix: 'justifay',
   connection: REDIS_CONFIG
 }
 
