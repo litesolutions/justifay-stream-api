@@ -35,6 +35,25 @@ const origins = [
   'https://justifay.com'
 ]
 
+const buildSwaggerOpts = (routes) => {
+  return routes.map(route => {
+    const { pathname, prefix = '', name, type = 'apiDoc' } = route
+    const basePath = process.env.API_PREFIX + prefix + pathname
+    const url = new URL(basePath + '/apiDocs', 'http://localhost')
+    const params = {
+      type,
+      basePath
+    }
+
+    url.search = new URLSearchParams(params)
+
+    return {
+      url: url.pathname + url.search,
+      name
+    }
+  })
+}
+
 app
   .use(logger())
   .use(session(sessionConfig, app))
@@ -42,16 +61,22 @@ app
   .use(error(errorConfig()))
   .use(koaSwagger({
     swaggerOptions: {
-      urls: [
+      urls: buildSwaggerOpts([
         {
-          url: `${process.env.API_PREFIX}/health/apiDocs?type=apiDoc&basePath=${process.env.API_PREFIX}/health`,
+          pathname: '/health',
           name: 'Health API Service'
         },
         {
-          url: `${process.env.API_PREFIX}/user/upload/apiDocs?type=apiDoc&basePath=${process.env.API_PREFIX}/user/upload`,
+          pathname: '/upload',
+          prefix: '/user',
           name: 'Upload API Service'
+        },
+        {
+          pathname: '/profile',
+          prefix: '/user',
+          name: 'Profile API Service'
         }
-      ]
+      ])
     }
   })) // swagger-ui at /docs
   .use(koaCash(koaCashConfig()))
