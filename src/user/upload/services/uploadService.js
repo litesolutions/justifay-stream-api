@@ -224,7 +224,7 @@ const uploadService = (ctx) => {
 
         logger.info('Adding audio to queue')
 
-        const job = await audioQueue.add({ filename })
+        const job = await audioQueue.add('audio', { filename })
 
         logger.info(`Job created with id: ${job.id}`)
       }
@@ -250,7 +250,7 @@ const uploadService = (ctx) => {
 
         data.image = { dimensions: { width, height } }
 
-        imageQueue.add({ filename, config: sharpConfig[config] })
+        imageQueue.add('image', { filename, config: sharpConfig[config] })
       }
 
       return data
