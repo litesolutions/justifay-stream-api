@@ -49,6 +49,9 @@ export default function () {
   GET.apiDoc = {
     operationId: 'streamTrack',
     description: 'Returns streamable file',
+    produces: [
+      'audio/x-m4a'
+    ],
     parameters: [
       {
         name: 'id',
