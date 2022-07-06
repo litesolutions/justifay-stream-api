@@ -24,8 +24,6 @@ export default function () {
         }
       }
 
-      console.log(tracks)
-
       const track = tracks.find(({ track_id: id }) => id === ctx.params.id)
 
       if (!track) {
