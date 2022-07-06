@@ -20,6 +20,7 @@ import sessionConfig from './config/session.js'
  * Koa apps
  */
 import health from './health/index.js'
+import stream from './stream/index.js'
 import user from './user/index.js'
 
 const app = new Koa({
@@ -90,6 +91,7 @@ app
   }))
 
 app.use(health.routes())
+app.use(stream.routes())
 app.use(mount('/user', user))
 
 export default app

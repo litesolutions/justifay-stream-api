@@ -13,6 +13,7 @@ import grantConfig from '../config/grant.js'
 import logout from './logout.js'
 import upload from './upload/index.js'
 import profile from './profile/index.js'
+import stream from './stream/index.js'
 
 /**
  * Swagger client for user-api
@@ -101,6 +102,7 @@ user.use(async (ctx, next) => {
 })
 
 user.use(upload.routes())
+user.use(stream.routes())
 user.use(profile.routes())
 user.use(mount('/logout', logout))
 
