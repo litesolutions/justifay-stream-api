@@ -1,6 +1,6 @@
 export default {
   key: process.env.APP_COOKIE_KEY || 'stream.koa.sess',
-  domain: process.env.APP_COOKIE_DOMAIN || 'stream.resonate.coop',
+  domain: process.env.APP_COOKIE_DOMAIN || 'stream.justifay.coop',
   maxAge: 86400000,
   autoCommit: true,
   overwrite: true,

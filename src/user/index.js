@@ -78,7 +78,7 @@ user.use(async (ctx, next) => {
       }
     })
 
-    response = await client.apis.Users.ResonateUser_GetUser({
+    response = await client.apis.Users.JustifayUser_GetUser({
       id
     })
 
