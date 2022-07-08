@@ -10,6 +10,7 @@ export const SUPPORTED_IMAGE_MIME_TYPES = [
 ]
 
 export const SUPPORTED_AUDIO_MIME_TYPES = [
+  'audio/mpeg',
   'audio/aac',
   'audio/aiff',
   'audio/mp4',
