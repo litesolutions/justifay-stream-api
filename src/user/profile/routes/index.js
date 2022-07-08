@@ -16,7 +16,7 @@ export default function () {
         }
       })
 
-      const response = await client.apis.Usergroups.JustifayUser_ListUsersUserGroups({
+      const response = await client.apis.Usergroups.ResonateUser_ListUsersUserGroups({
         id: ctx.profile.id
       })
 
