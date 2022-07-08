@@ -15,7 +15,8 @@ import {
 } from '../../../config/redis.js'
 
 import {
-  HIGH_RES_AUDIO_MIME_TYPES,
+  // HIGH_RES_AUDIO_MIME_TYPES,
+  SUPPORTED_AUDIO_MIME_TYPES,
   SUPPORTED_IMAGE_MIME_TYPES
 } from '../../../config/supported-media-types.js'
 
@@ -159,7 +160,7 @@ const uploadService = (ctx) => {
       const isImage = SUPPORTED_IMAGE_MIME_TYPES
         .includes(mime)
 
-      const isAudio = HIGH_RES_AUDIO_MIME_TYPES
+      const isAudio = SUPPORTED_AUDIO_MIME_TYPES
         .includes(mime)
 
       if (!isImage && !isAudio) {
