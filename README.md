@@ -1,4 +1,4 @@
-# Koa swagger api template
+# Justifay Stream API
 
 ## Stack
 
