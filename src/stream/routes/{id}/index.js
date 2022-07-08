@@ -1,6 +1,7 @@
 import path from 'path'
 import { readdir } from 'node:fs/promises'
 import { validate as validateUUID } from 'uuid'
+import fs from 'fs'
 
 const BASE_DATA_DIR = process.env.BASE_DATA_DIR || '/'
 
@@ -14,9 +15,19 @@ export default function () {
       const files = await readdir(path.join(BASE_DATA_DIR, '/data/media/audio'))
       const tracks = []
 
-      for (const [index, file] of files.entries()) {
+      const list = files
+        .map(fileName => ({
+          name: fileName,
+          time: fs.statSync(path.join(BASE_DATA_DIR, `/data/media/audio/${fileName}`)).mtime.getTime()
+        }))
+        .sort((a, b) => a.time - b.time)
+        .map(file => file.name)
+
+      let index = 0
+      for (const file of list) {
         const name = file.split('.')[0]
         if (validateUUID(name)) {
+          index = index + 1
           tracks.push({
             id: name,
             track_id: index + 1
