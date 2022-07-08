@@ -45,7 +45,7 @@ Config is at `src/config/databases.js`.
 
 ## Connect to OAuth2 server using koa grant
 
-This API can connect to an OAuth2 server like `resonatecoop/id`.
+This API can connect to an OAuth2 server like `justifay-id`.
 Config is at `src/config/grant.js`.
 
 
