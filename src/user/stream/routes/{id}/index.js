@@ -30,7 +30,7 @@ export default function () {
           index = index + 1
           tracks.push({
             id: name,
-            track_id: index + 1
+            track_id: index
           })
         }
       }
